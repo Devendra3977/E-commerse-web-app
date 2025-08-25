@@ -1,12 +1,13 @@
  import { useEffect, useState } from 'react';
 // import new_collections from '../../assets/images/new_collections';
 import Item from '../Item/Item';
+import BASE_URL from '../../config/api';
 
 const NewCollections = () => {
   const [new_collections, setNew_collections] = useState([]);
 
   useEffect(()=>{
-    fetch('http://localhost:4000/newcollections')
+    fetch(`${BASE_URL}/newcollections`)
     .then((resp)=>(resp.json()))
     .then((data)=>setNew_collections(data));
   },[])

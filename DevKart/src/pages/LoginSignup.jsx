@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import BASE_URL from '../config/api'
 
 const LoginSignup = () => {
 
@@ -17,7 +18,7 @@ const LoginSignup = () => {
   const login = async ()=>{
     console.log("Login function executed", formData);
      let responseData;
-    await fetch('http://localhost:4000/login',{
+    await fetch(`${BASE_URL}/login`,{
       method:"POST",
       headers:{
         Accept:"application/form-data",
@@ -38,7 +39,7 @@ const LoginSignup = () => {
    const signup = async ()=>{
     console.log("signup function executed", formData)
     let responseData;
-    await fetch('http://localhost:4000/signup',{
+    await fetch(`${BASE_URL}/signup`,{
       method:"POST",
       headers:{
         Accept:"application/form-data",
