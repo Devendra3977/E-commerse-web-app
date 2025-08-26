@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import upload_image_icon from '../../assets/upload_area.svg'
+import BASE_URL from '../../config/api'
 
 const Addproduct = () => {
   const [image, setImage] = useState(false);
@@ -24,7 +25,7 @@ const Addproduct = () => {
     let product = productDetails;
     let formData = new FormData();
     formData.append('product', image);
-    await fetch('http://localhost:4000/upload',{
+    await fetch(`${BASE_URL}/upload`,{
       method:'POST',
       headers:{
         Accept:'application/json'
@@ -35,7 +36,7 @@ const Addproduct = () => {
     if(responseData.success){
       product.image = responseData.image_url;
       console.log(product)
-      await fetch('http://localhost:4000/addproduct',{
+      await fetch(`${BASE_URL}/addproduct`,{
         method:"POST",
         headers:{
           Accept:"application/json",

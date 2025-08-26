@@ -1,16 +1,17 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
+import BASE_URL from '../../config/api';
 
 const Listproduct = () => {
 const [allProduct, setAllProduct] = useState([]);
 
 const fetchInfo = async()=>{
-  await fetch('http://localhost:4000/allproducts').then((resp)=>(resp.json())).then((data)=>{setAllProduct(data)})
+  await fetch(`${BASE_URL}/allproducts`).then((resp)=>(resp.json())).then((data)=>{setAllProduct(data)})
 }
 
 const deleteItem = async (id)=>{
-  await fetch('http://localhost:4000/removeproduct',{
+  await fetch(`${BASE_URL}/removeproduct`,{
     method:"POST",
     headers:{
       Accept:"application/json",
